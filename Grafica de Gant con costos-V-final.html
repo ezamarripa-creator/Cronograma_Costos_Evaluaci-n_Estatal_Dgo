@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+
+    <script>
+    (function() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+      
+       document.addEventListener('keydown', function(e) {
+            const key = e.key.toLowerCase();
+            if ((e.ctrlKey && (key === 'u' || key === 's' || key === 'c' || key === 'i' || key === 'j')) ||
+                (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) ||
+                e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        let devtoolsTriggered = false;
+        setInterval(function() {
+            if (devtoolsTriggered) return;
+            const before = new Date();
+            debugger; 
+            const after = new Date();
+            if (after - before > 100) { 
+                devtoolsTriggered = true;
+                document.body.innerHTML = '<div style="text-align:center; padding:50px; font-family:sans-serif;"><h1 style="color:#042C53;">⚠️ Acceso no autorizado</h1><p>El uso de herramientas de desarrollo no está permitido en este recurso institucional.</p><p style="font-size:14px; margin-top:30px;">🔒 COBAED · Dirección Académica</p></div>';
+            }
+        }, 2000);
+        
+        const style = document.createElement('style');
+        style.textContent = `body { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }`;
+        document.head.appendChild(style);
+    })();
+    </script>
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma · Proyecto Estatal Durango</title>
+  <!-- Google Font & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2efe9;  /* beige neutro */
+      font-family: 'Inter', sans-serif;
+      padding: 40px 24px;
+      display: flex;
+      justify-content: center;
+      color: #2e2b27; /* marrón/tierra oscuro */
+    }
+
+    .container {
+      max-width: 1440px;
+      width: 100%;
+      background: #ffffff;  /* blanco puro */
+      border-radius: 36px;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12), 0 8px 24px -6px rgba(0,0,0,0.05);
+      padding: 40px 40px 50px;
+      transition: all 0.2s;
+      border: 1px solid #e5dfd7; /* beige grisáceo */
+    }
+
+    /* Encabezado institucional */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      border-bottom: 2px solid #d6cec2; /* beige/marrón suave */
+      padding-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .title-section h1 {
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      color: #1c1a18; /* negro suave */
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .title-section h1 i {
+      color: #7a6b5a; /* marrón tierra */
+      font-size: 28px;
+    }
+
+    .title-section .sub {
+      font-weight: 500;
+      font-size: 16px;
+      color: #4d4238; /* marrón medio */
+      background: #ede8e1; /* beige claro */
+      display: inline-block;
+      padding: 4px 18px;
+      border-radius: 40px;
+      margin-top: 8px;
+    }
+
+    .badge-estado {
+      background: #2b2825; /* negro con matiz */
+      color: #f5f0ea; /* crema */
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 8px rgba(30, 25, 20, 0.08);
+      border: 1px solid #4f4438;
+    }
+
+    .badge-estado i {
+      margin-right: 8px;
+      color: #c8b8a6; /* beige dorado */
+    }
+
+    /* stats */
+    .stats-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 30px;
+      background: #f6f2ec; /* beige muy claro */
+      padding: 16px 28px;
+      border-radius: 40px;
+      margin-bottom: 36px;
+      border: 1px solid #ddd5ca;
+      box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.8);
+    }
+
+    .stats-mini div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #332e29;
+    }
+
+    .stats-mini i {
+      color: #7a6b5a; /* marrón */
+      width: 22px;
+      font-size: 18px;
+    }
+
+    .stats-mini span {
+      font-weight: 700;
+      color: #1f1b17;
+    }
+
+    /* tabla */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 24px;
+      border: 1px solid #d9d0c4;
+      background: white;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 800px;
+    }
+
+    th {
+      background: #eae4db; /* beige gris */
+      text-align: left;
+      padding: 16px 16px;
+      font-weight: 600;
+      color: #231f1b;
+      border-bottom: 2px solid #c8bdb0;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e3dbd1;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .actividad-num {
+      font-weight: 700;
+      color: #3f352c;
+      width: 30px;
+    }
+
+    .actividad-nombre {
+      font-weight: 600;
+      color: #1e1a16;
+    }
+
+    .actividad-desc {
+      color: #4d4238;
+      font-size: 13px;
+      max-width: 280px;
+    }
+
+    .fecha {
+      font-weight: 500;
+      white-space: nowrap;
+      color: #2b2620;
+    }
+
+    .costo {
+      font-weight: 700;
+      color: #1f1b17;
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .costo-vacio {
+      color: #9b8d7d;
+    }
+
+    .badge-dias {
+      background: #ded5c8;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #2f2821;
+    }
+
+    /* Gantt */
+    .gantt-wrapper {
+      background: #f9f5ef; /* crema */
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      border: 1px solid #d6cdbf;
+      margin-top: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+    }
+
+    .gantt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .gantt-header h3 {
+      font-weight: 700;
+      font-size: 20px;
+      color: #201c17;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .gantt-header h3 i {
+      color: #7a6b5a;
+    }
+
+    .gantt-leyenda {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: #2b2620;
+    }
+
+    .gantt-leyenda span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .color-bar {
+      display: inline-block;
+      width: 20px;
+      height: 10px;
+      border-radius: 30px;
+    }
+
+    .bar-bg {
+      background: #e3dbd0;
+      height: 34px;
+      border-radius: 40px;
+      position: relative;
+      margin: 6px 0;
+      overflow: hidden;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      transition: width 0.15s;
+      min-width: 20px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* paleta de colores: marrones, tierras, verdes suaves, azules, crema */
+    .bar-fill.phase1 { background: #6b5d4e; } /* marrón tierra */
+    .bar-fill.phase2 { background: #8f7a64; } /* marrón medio */
+    .bar-fill.phase3 { background: #a6907a; } /* beige/marrón */
+    .bar-fill.phase4 { background: #7a8c7a; } /* verde suave */
+    .bar-fill.phase5 { background: #8da38d; } /* verde claro */
+    .bar-fill.phase6 { background: #6f8c9e; } /* azul grisáceo */
+    .bar-fill.phase7 { background: #5f7d8f; } /* azul apagado */
+    .bar-fill.phase8 { background: #4f6d7a; } /* azul profundo */
+    .bar-fill.phase9 { background: #3f5f6b; } /* azul pizarra */
+    .bar-fill.phase10 { background: #7a8b7a; } /* verde oliva */
+    .bar-fill.phase11 { background: #9a8b7a; } /* beige/caqui */
+    .bar-fill.phase12 { background: #8a7d6a; } /* marrón grisáceo */
+
+    .gantt-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid #e5dcd0;
+    }
+    .gantt-row:last-child { border-bottom: none; }
+
+    .gantt-label {
+      width: 220px;
+      min-width: 200px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1f1b17;
+      padding-right: 10px;
+    }
+
+    .gantt-bar-container {
+      flex: 1;
+    }
+
+    .gantt-cost {
+      width: 100px;
+      text-align: right;
+      font-weight: 700;
+      color: #1f1b17;
+      font-size: 13px;
+    }
+    .gantt-cost small {
+      font-weight: 400;
+      color: #7a6b5a;
+    }
+
+    .total-cost {
+      margin-top: 28px;
+      background: #eae2d7; /* beige */
+      padding: 14px 28px;
+      border-radius: 60px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 20px;
+      color: #1c1814;
+      border: 1px solid #cbbfb0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .total-cost i {
+      margin-right: 14px;
+      color: #6b5d4e;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      font-size: 14px;
+      color: #3f352c;
+      background: #f0e9e1;
+      padding: 12px 24px;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #d6cdbf;
+    }
+
+    @media (max-width: 680px) {
+      .container { padding: 20px; }
+      .header { flex-direction: column; gap: 16px; }
+      .gantt-label { width: 140px; min-width: 120px; }
+      .badge-estado { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title-section">
+      <h1><i class="fas fa-chalkboard-teacher"></i> Cronograma · Evaluación Estandarizada Estatal en Durango</h1>
+      <div class="sub"><i class="far fa-calendar-alt"></i> Ciclo 2026–2027 · 12 fases operativas</div>
+    </div>
+    <div class="badge-estado"><i class="fas fa-flag-checkered"></i> Secretaría de Educación · SEED</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-mini">
+    <div><i class="fas fa-tasks"></i> Total actividades: <span>12</span></div>
+    <div><i class="fas fa-users"></i> Participantes: <span>220+</span></div>
+    <div><i class="fas fa-coffee"></i> Jornadas presenciales: <span>4</span></div>
+    <div><i class="fas fa-file-alt"></i> Reportes por subsistema: <span>5</span></div>
+    <div><i class="fas fa-chart-line"></i> Pilotaje: <span>muestra probabilística</span></div>
+  </div>
+
+  <!-- TABLA CRONOGRAMA -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Actividad</th><th>Descripción</th><th>Inicio</th><th>Fin</th><th>Días</th><th>Costo (MXN)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="actividad-num">1</td><td class="actividad-nombre">Fase de Diseño Conceptual Inicial</td><td class="actividad-desc">Consolidación de academias por disciplina. Tabla de descriptores y competencias.</td><td class="fecha">11/09/2026</td><td class="fecha">11/09/2026</td><td><span class="badge-dias">1</span></td><td class="costo">$85,000</td></tr>
+        <tr><td class="actividad-num">2</td><td class="actividad-nombre">Validación de la Estructura de Medición</td><td class="actividad-desc">Diseño y validación metodológica fina de tabla de especificaciones e indicadores.</td><td class="fecha">14/09/2026</td><td class="fecha">30/09/2026</td><td><span class="badge-dias">17</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">3</td><td class="actividad-nombre">Estrategias de Despliegue (creación de reactivos)</td><td class="actividad-desc">Adaptaciones operativas por subsistema. Reunión COMITÉ.</td><td class="fecha">28/09/2026</td><td class="fecha">16/10/2026</td><td><span class="badge-dias">19</span></td><td class="costo">$10,000</td></tr>
+        <tr><td class="actividad-num">4</td><td class="actividad-nombre">Arbitraje Técnico de Reactivos (CAER)</td><td class="actividad-desc">Validación analítica y calibración técnica del banco de ítems.</td><td class="fecha">16/10/2026</td><td class="fecha">30/10/2026</td><td><span class="badge-dias">15</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">5</td><td class="actividad-nombre">Ensamblaje de instrumentos</td><td class="actividad-desc">Preparación de instrumentos para aplicación.</td><td class="fecha">03/11/2026</td><td class="fecha">13/11/2026</td><td><span class="badge-dias">11</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">6</td><td class="actividad-nombre">Pilotaje de Control Psicométrico</td><td class="actividad-desc">Muestra probabilística. Calibración analítica de exámenes.</td><td class="fecha">17/11/2026</td><td class="fecha">20/11/2026</td><td><span class="badge-dias">4</span></td><td class="costo">$95,000</td></tr>
+        <tr><td class="actividad-num">7</td><td class="actividad-nombre">Análisis y Validación del Piloteo</td><td class="actividad-desc">Revisión de aplicación y método en prueba piloto.</td><td class="fecha">23/11/2026</td><td class="fecha">27/11/2026</td><td><span class="badge-dias">5</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">8</td><td class="actividad-nombre">Jornada General de Aplicación Oficial</td><td class="actividad-desc">Ventana unificada nacional e institucional. Planteles Durango.</td><td class="fecha">05/12/2026</td><td class="fecha">16/12/2026</td><td><span class="badge-dias">12</span></td><td class="costo">$180,000</td></tr>
+        <tr><td class="actividad-num">9</td><td class="actividad-nombre">Análisis Masivo de Datos Colectados</td><td class="actividad-desc">Cálculo de bases crudas, sábanas analíticas y empaquetamiento psicométrico.</td><td class="fecha">11/01/2027</td><td class="fecha">22/01/2027</td><td><span class="badge-dias">12</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">10</td><td class="actividad-nombre">Emisión de Reportes por Subsistema</td><td class="actividad-desc">Rendición de informes ejecutivos a mandos medios y directores.</td><td class="fecha">25/01/2027</td><td class="fecha">29/01/2027</td><td><span class="badge-dias">5</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">11</td><td class="actividad-nombre">Generación de Estrategias de Mejora Continua</td><td class="actividad-desc">Gestación de estrategias contextualizadas por subsistema.</td><td class="fecha">02/02/2027</td><td class="fecha">19/02/2027</td><td><span class="badge-dias">18</span></td><td class="costo">$10,000</td></tr>
+        <tr><td class="actividad-num">12</td><td class="actividad-nombre">Activación de Estrategias de Mejora Continua</td><td class="actividad-desc">Ejecución en aula de planes pedagógicos remediales.</td><td class="fecha">01/02/2027</td><td class="fecha">30/06/2027</td><td><span class="badge-dias">150</span></td><td class="costo costo-vacio">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GANTT -->
+  <div class="gantt-wrapper">
+    <div class="gantt-header">
+      <h3><i class="fas fa-chart-bar"></i> Diagrama de Gantt · 2026–2027</h3>
+
+
+
+ <!--
+      <div class="gantt-leyenda">
+        <span><span class="color-bar" style="background:#6b5d4e;"></span> Tierra</span>
+        <span><span class="color-bar" style="background:#7a8c7a;"></span> Verde</span>
+        <span><span class="color-bar" style="background:#6f8c9e;"></span> Azul</span>
+        <span><span class="color-bar" style="background:#8f7a64;"></span> Marrón</span>
+        <span><span class="color-bar" style="background:#8a7d6a;"></span> Gris</span>
+      </div>
+
+-->
+
+
+
+    </div>
+
+    <div id="ganttContainer"></div>
+
+    <div class="total-cost">
+      <i class="fas fa-calculator"></i> Costo total estimado: $380,000 MXN
+      <span style="font-weight:400; font-size:16px; margin-left:14px; color:#4d4238;">+ honorarios profesionales</span>
+    </div>
+    <div class="footer-note">
+      <i class="fas fa-info-circle"></i> Costos incluyen servicios de cafetería, alimentos, logística y operación. Honorarios: $120,000 MXN (6 especialistas × 2 meses)
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const activities = [
+      { id: 1, label: "1. Diseño Conceptual Inicial", start: new Date(2026, 8, 11), end: new Date(2026, 8, 11), phase: "phase1" },
+      { id: 2, label: "2. Validación Estructura", start: new Date(2026, 8, 14), end: new Date(2026, 8, 30), phase: "phase2" },
+      { id: 3, label: "3. Estrategias Despliegue", start: new Date(2026, 8, 28), end: new Date(2026, 9, 16), phase: "phase3" },
+      { id: 4, label: "4. Arbitraje Técnico CAER", start: new Date(2026, 9, 16), end: new Date(2026, 9, 30), phase: "phase4" },
+      { id: 5, label: "5. Ensamblaje instrumentos", start: new Date(2026, 10, 3), end: new Date(2026, 10, 13), phase: "phase5" },
+      { id: 6, label: "6. Pilotaje Psicométrico", start: new Date(2026, 10, 17), end: new Date(2026, 10, 20), phase: "phase6" },
+      { id: 7, label: "7. Análisis y Validación", start: new Date(2026, 10, 23), end: new Date(2026, 10, 27), phase: "phase7" },
+      { id: 8, label: "8. Jornada Aplicación Oficial", start: new Date(2026, 11, 5), end: new Date(2026, 11, 16), phase: "phase8" },
+      { id: 9, label: "9. Análisis Masivo de Datos", start: new Date(2027, 0, 11), end: new Date(2027, 0, 22), phase: "phase9" },
+      { id: 10, label: "10. Emisión de Reportes", start: new Date(2027, 0, 25), end: new Date(2027, 0, 29), phase: "phase10" },
+      { id: 11, label: "11. Generación Mejora Continua", start: new Date(2027, 1, 2), end: new Date(2027, 1, 19), phase: "phase11" },
+      { id: 12, label: "12. Activación Mejora Continua", start: new Date(2027, 1, 1), end: new Date(2027, 5, 30), phase: "phase12" }
+    ];
+
+    const globalStart = new Date(2026, 8, 11);
+    const globalEnd = new Date(2027, 5, 30);
+    const totalMs = globalEnd.getTime() - globalStart.getTime();
+
+    function getPercent(startDate, endDate) {
+      const startMs = Math.max(startDate.getTime(), globalStart.getTime());
+      const endMs = Math.min(endDate.getTime(), globalEnd.getTime());
+      const left = (startMs - globalStart.getTime()) / totalMs * 100;
+      const width = (endMs - startMs) / totalMs * 100;
+      return { left: Math.max(0, left), width: Math.max(0.5, width) };
+    }
+
+    const container = document.getElementById('ganttContainer');
+    let html = '';
+
+    const costMap = {
+      1: 85000, 2: null, 3: 10000, 4: null, 5: null, 6: 95000,
+      7: null, 8: 180000, 9: null, 10: null, 11: 10000, 12: null
+    };
+
+    activities.forEach(act => {
+      const { left, width } = getPercent(act.start, act.end);
+      const cost = costMap[act.id] ? `$${costMap[act.id].toLocaleString()}` : '—';
+      const phaseClass = act.phase || 'phase1';
+      html += `
+        <div class="gantt-row">
+          <div class="gantt-label"><i class="far fa-circle" style="color:#7a6b5a;font-size:10px;"></i> ${act.label}</div>
+          <div class="gantt-bar-container">
+            <div class="bar-bg">
+              <div class="bar-fill ${phaseClass}" style="width:${width}%; margin-left:${left}%;">${width > 7 ? Math.round(width)+'%' : ''}</div>
+            </div>
+          </div>
+          <div class="gantt-cost">${cost}</div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+  })();
+</script>
+</body>
+</html>
