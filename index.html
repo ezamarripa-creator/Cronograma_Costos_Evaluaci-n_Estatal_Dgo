@@ -323,19 +323,17 @@
       text-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 
-    /* paleta de colores: marrones, tierras, verdes suaves, azules, crema */
-    .bar-fill.phase1 { background: #6b5d4e; } /* marrón tierra */
-    .bar-fill.phase2 { background: #8f7a64; } /* marrón medio */
-    .bar-fill.phase3 { background: #a6907a; } /* beige/marrón */
-    .bar-fill.phase4 { background: #7a8c7a; } /* verde suave */
-    .bar-fill.phase5 { background: #8da38d; } /* verde claro */
-    .bar-fill.phase6 { background: #6f8c9e; } /* azul grisáceo */
-    .bar-fill.phase7 { background: #5f7d8f; } /* azul apagado */
-    .bar-fill.phase8 { background: #4f6d7a; } /* azul profundo */
-    .bar-fill.phase9 { background: #3f5f6b; } /* azul pizarra */
-    .bar-fill.phase10 { background: #7a8b7a; } /* verde oliva */
-    .bar-fill.phase11 { background: #9a8b7a; } /* beige/caqui */
-    .bar-fill.phase12 { background: #8a7d6a; } /* marrón grisáceo */
+    /* paleta de colores: 10 fases */
+    .bar-fill.phase1 { background: #6b5d4e; }
+    .bar-fill.phase2 { background: #8f7a64; }
+    .bar-fill.phase3 { background: #a6907a; }
+    .bar-fill.phase4 { background: #7a8c7a; }
+    .bar-fill.phase5 { background: #8da38d; }
+    .bar-fill.phase6 { background: #4f6d7a; } /* azul profundo para Jornada Aplicación */
+    .bar-fill.phase7 { background: #3f5f6b; }
+    .bar-fill.phase8 { background: #5f7d8f; }
+    .bar-fill.phase9 { background: #6f8c9e; }
+    .bar-fill.phase10 { background: #7a8b7a; }
 
     .gantt-row {
       display: flex;
@@ -414,21 +412,21 @@
   <div class="header">
     <div class="title-section">
       <h1><i class="fas fa-chalkboard-teacher"></i> Cronograma · Evaluación Estandarizada Estatal en Durango</h1>
-      <div class="sub"><i class="far fa-calendar-alt"></i> Ciclo 2026–2027 · 12 fases operativas</div>
+      <div class="sub"><i class="far fa-calendar-alt"></i> Ciclo 2026–2027 · 10 fases operativas</div>
     </div>
     <div class="badge-estado"><i class="fas fa-flag-checkered"></i> Secretaría de Educación · SEED</div>
   </div>
 
   <!-- STATS -->
   <div class="stats-mini">
-    <div><i class="fas fa-tasks"></i> Total actividades: <span>12</span></div>
+    <div><i class="fas fa-tasks"></i> Total actividades: <span>10</span></div>
     <div><i class="fas fa-users"></i> Participantes: <span>220+</span></div>
     <div><i class="fas fa-coffee"></i> Jornadas presenciales: <span>4</span></div>
     <div><i class="fas fa-file-alt"></i> Reportes por subsistema: <span>5</span></div>
     <div><i class="fas fa-chart-line"></i> Pilotaje: <span>muestra probabilística</span></div>
   </div>
 
-  <!-- TABLA CRONOGRAMA -->
+  <!-- TABLA CRONOGRAMA (10 fases) -->
   <div class="table-wrap">
     <table>
       <thead>
@@ -440,43 +438,26 @@
         <tr><td class="actividad-num">3</td><td class="actividad-nombre">Estrategias de Despliegue (creación de reactivos)</td><td class="actividad-desc">Adaptaciones operativas por subsistema. Reunión COMITÉ.</td><td class="fecha">28/09/2026</td><td class="fecha">16/10/2026</td><td><span class="badge-dias">19</span></td><td class="costo">$10,000</td></tr>
         <tr><td class="actividad-num">4</td><td class="actividad-nombre">Arbitraje Técnico de Reactivos (CAER)</td><td class="actividad-desc">Validación analítica y calibración técnica del banco de ítems.</td><td class="fecha">16/10/2026</td><td class="fecha">30/10/2026</td><td><span class="badge-dias">15</span></td><td class="costo costo-vacio">—</td></tr>
         <tr><td class="actividad-num">5</td><td class="actividad-nombre">Ensamblaje de instrumentos</td><td class="actividad-desc">Preparación de instrumentos para aplicación.</td><td class="fecha">03/11/2026</td><td class="fecha">13/11/2026</td><td><span class="badge-dias">11</span></td><td class="costo costo-vacio">—</td></tr>
-        <tr><td class="actividad-num">6</td><td class="actividad-nombre">Pilotaje de Control Psicométrico</td><td class="actividad-desc">Muestra probabilística. Calibración analítica de exámenes.</td><td class="fecha">17/11/2026</td><td class="fecha">20/11/2026</td><td><span class="badge-dias">4</span></td><td class="costo">$95,000</td></tr>
-        <tr><td class="actividad-num">7</td><td class="actividad-nombre">Análisis y Validación del Piloteo</td><td class="actividad-desc">Revisión de aplicación y método en prueba piloto.</td><td class="fecha">23/11/2026</td><td class="fecha">27/11/2026</td><td><span class="badge-dias">5</span></td><td class="costo costo-vacio">—</td></tr>
-        <tr><td class="actividad-num">8</td><td class="actividad-nombre">Jornada General de Aplicación Oficial</td><td class="actividad-desc">Ventana unificada nacional e institucional. Planteles Durango.</td><td class="fecha">05/12/2026</td><td class="fecha">16/12/2026</td><td><span class="badge-dias">12</span></td><td class="costo">$180,000</td></tr>
-        <tr><td class="actividad-num">9</td><td class="actividad-nombre">Análisis Masivo de Datos Colectados</td><td class="actividad-desc">Cálculo de bases crudas, sábanas analíticas y empaquetamiento psicométrico.</td><td class="fecha">11/01/2027</td><td class="fecha">22/01/2027</td><td><span class="badge-dias">12</span></td><td class="costo costo-vacio">—</td></tr>
-        <tr><td class="actividad-num">10</td><td class="actividad-nombre">Emisión de Reportes por Subsistema</td><td class="actividad-desc">Rendición de informes ejecutivos a mandos medios y directores.</td><td class="fecha">25/01/2027</td><td class="fecha">29/01/2027</td><td><span class="badge-dias">5</span></td><td class="costo costo-vacio">—</td></tr>
-        <tr><td class="actividad-num">11</td><td class="actividad-nombre">Generación de Estrategias de Mejora Continua</td><td class="actividad-desc">Gestación de estrategias contextualizadas por subsistema.</td><td class="fecha">02/02/2027</td><td class="fecha">19/02/2027</td><td><span class="badge-dias">18</span></td><td class="costo">$10,000</td></tr>
-        <tr><td class="actividad-num">12</td><td class="actividad-nombre">Activación de Estrategias de Mejora Continua</td><td class="actividad-desc">Ejecución en aula de planes pedagógicos remediales.</td><td class="fecha">01/02/2027</td><td class="fecha">30/06/2027</td><td><span class="badge-dias">150</span></td><td class="costo costo-vacio">—</td></tr>
+        <!-- Fase 6 actualizada con fechas específicas por semestre -->
+        <tr><td class="actividad-num">6</td><td class="actividad-nombre">Jornada General de Aplicación Oficial Estatal</td><td class="actividad-desc">Ventana unificada e institucional. • 25/11/2026 - PRIMER SEMESTRE • 26/11/2026 - TERCER SEMESTRE • 27/11/2026 - QUINTO SEMESTRE</td><td class="fecha">25/11/2026</td><td class="fecha">27/11/2026</td><td><span class="badge-dias">3</span></td><td class="costo">$180,000</td></tr>
+        <tr><td class="actividad-num">7</td><td class="actividad-nombre">Análisis Masivo de Datos Colectados</td><td class="actividad-desc">Cálculo de bases crudas, sábanas analíticas y empaquetamiento psicométrico.</td><td class="fecha">11/01/2027</td><td class="fecha">22/01/2027</td><td><span class="badge-dias">12</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">8</td><td class="actividad-nombre">Emisión de Reportes por Subsistema</td><td class="actividad-desc">Rendición de informes ejecutivos a mandos medios y directores.</td><td class="fecha">25/01/2027</td><td class="fecha">29/01/2027</td><td><span class="badge-dias">5</span></td><td class="costo costo-vacio">—</td></tr>
+        <tr><td class="actividad-num">9</td><td class="actividad-nombre">Generación de Estrategias de Mejora Continua</td><td class="actividad-desc">Gestación de estrategias contextualizadas por subsistema.</td><td class="fecha">02/02/2027</td><td class="fecha">19/02/2027</td><td><span class="badge-dias">18</span></td><td class="costo">$10,000</td></tr>
+        <tr><td class="actividad-num">10</td><td class="actividad-nombre">Activación de Estrategias de Mejora Continua</td><td class="actividad-desc">Ejecución en aula de planes pedagógicos remediales.</td><td class="fecha">01/02/2027</td><td class="fecha">30/06/2027</td><td><span class="badge-dias">150</span></td><td class="costo costo-vacio">—</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- GANTT -->
+  <!-- GANTT (10 fases, fase 6 actualizada) -->
   <div class="gantt-wrapper">
     <div class="gantt-header">
       <h3><i class="fas fa-chart-bar"></i> Diagrama de Gantt · 2026–2027</h3>
-
-
-
- <!--
-      <div class="gantt-leyenda">
-        <span><span class="color-bar" style="background:#6b5d4e;"></span> Tierra</span>
-        <span><span class="color-bar" style="background:#7a8c7a;"></span> Verde</span>
-        <span><span class="color-bar" style="background:#6f8c9e;"></span> Azul</span>
-        <span><span class="color-bar" style="background:#8f7a64;"></span> Marrón</span>
-        <span><span class="color-bar" style="background:#8a7d6a;"></span> Gris</span>
-      </div>
-
--->
-
-
-
     </div>
 
     <div id="ganttContainer"></div>
 
     <div class="total-cost">
-      <i class="fas fa-calculator"></i> Costo total estimado: $380,000 MXN
+      <i class="fas fa-calculator"></i> Costo total estimado: $285,000 MXN
       <span style="font-weight:400; font-size:16px; margin-left:14px; color:#4d4238;">+ honorarios profesionales</span>
     </div>
     <div class="footer-note">
@@ -487,19 +468,19 @@
 
 <script>
   (function() {
+    // 10 actividades, fase 6 actualizada con fechas 25, 26, 27 de noviembre 2026
     const activities = [
       { id: 1, label: "1. Diseño Conceptual Inicial", start: new Date(2026, 8, 11), end: new Date(2026, 8, 11), phase: "phase1" },
       { id: 2, label: "2. Validación Estructura", start: new Date(2026, 8, 14), end: new Date(2026, 8, 30), phase: "phase2" },
       { id: 3, label: "3. Estrategias Despliegue", start: new Date(2026, 8, 28), end: new Date(2026, 9, 16), phase: "phase3" },
       { id: 4, label: "4. Arbitraje Técnico CAER", start: new Date(2026, 9, 16), end: new Date(2026, 9, 30), phase: "phase4" },
       { id: 5, label: "5. Ensamblaje instrumentos", start: new Date(2026, 10, 3), end: new Date(2026, 10, 13), phase: "phase5" },
-      { id: 6, label: "6. Pilotaje Psicométrico", start: new Date(2026, 10, 17), end: new Date(2026, 10, 20), phase: "phase6" },
-      { id: 7, label: "7. Análisis y Validación", start: new Date(2026, 10, 23), end: new Date(2026, 10, 27), phase: "phase7" },
-      { id: 8, label: "8. Jornada Aplicación Oficial", start: new Date(2026, 11, 5), end: new Date(2026, 11, 16), phase: "phase8" },
-      { id: 9, label: "9. Análisis Masivo de Datos", start: new Date(2027, 0, 11), end: new Date(2027, 0, 22), phase: "phase9" },
-      { id: 10, label: "10. Emisión de Reportes", start: new Date(2027, 0, 25), end: new Date(2027, 0, 29), phase: "phase10" },
-      { id: 11, label: "11. Generación Mejora Continua", start: new Date(2027, 1, 2), end: new Date(2027, 1, 19), phase: "phase11" },
-      { id: 12, label: "12. Activación Mejora Continua", start: new Date(2027, 1, 1), end: new Date(2027, 5, 30), phase: "phase12" }
+      // Fase 6: Jornada General de Aplicación Oficial Estatal (25-27 noviembre 2026)
+      { id: 6, label: "6. Jornada Aplicación Oficial Estatal", start: new Date(2026, 10, 25), end: new Date(2026, 10, 27), phase: "phase6" },
+      { id: 7, label: "7. Análisis Masivo de Datos", start: new Date(2027, 0, 11), end: new Date(2027, 0, 22), phase: "phase7" },
+      { id: 8, label: "8. Emisión de Reportes", start: new Date(2027, 0, 25), end: new Date(2027, 0, 29), phase: "phase8" },
+      { id: 9, label: "9. Generación Mejora Continua", start: new Date(2027, 1, 2), end: new Date(2027, 1, 19), phase: "phase9" },
+      { id: 10, label: "10. Activación Mejora Continua", start: new Date(2027, 1, 1), end: new Date(2027, 5, 30), phase: "phase10" }
     ];
 
     const globalStart = new Date(2026, 8, 11);
@@ -518,8 +499,8 @@
     let html = '';
 
     const costMap = {
-      1: 85000, 2: null, 3: 10000, 4: null, 5: null, 6: 95000,
-      7: null, 8: 180000, 9: null, 10: null, 11: 10000, 12: null
+      1: 85000, 2: null, 3: 10000, 4: null, 5: null,
+      6: 180000, 7: null, 8: null, 9: 10000, 10: null
     };
 
     activities.forEach(act => {
